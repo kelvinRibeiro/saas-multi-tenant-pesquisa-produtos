@@ -55,7 +55,7 @@ export async function updateProduct(
     runValidators: true,
   });
 
-  if (updated && data.imageUrl && data.imageUrl !== existing.imageUrl) {
+  if (updated && data.imageUrl !== undefined && data.imageUrl !== existing.imageUrl) {
     await deleteUploadedImageIfLocal(existing.imageUrl);
   }
 
