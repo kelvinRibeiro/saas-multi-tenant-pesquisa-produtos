@@ -11,10 +11,17 @@ fs.mkdirSync(PRODUCT_UPLOADS_DIR, { recursive: true });
 const ALLOWED_MIME_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024;
 
+const MIME_TO_EXTENSION: Record<string, string> = {
+  "image/jpeg": ".jpg",
+  "image/png": ".png",
+  "image/webp": ".webp",
+  "image/gif": ".gif",
+};
+
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, PRODUCT_UPLOADS_DIR),
   filename: (_req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
+    const ext = MIME_TO_EXTENSION[file.mimetype] ?? "";
     cb(null, `${crypto.randomUUID()}${ext}`);
   },
 });
