@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Navbar } from "./components/Navbar";
@@ -35,9 +36,11 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Toaster position="top-right" toastOptions={{ style: { fontFamily: "IBM Plex Sans, sans-serif" } }} />
-      <AppRoutes />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Toaster position="top-right" toastOptions={{ style: { fontFamily: "IBM Plex Sans, sans-serif" } }} />
+        <AppRoutes />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
