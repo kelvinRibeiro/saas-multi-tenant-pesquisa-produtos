@@ -56,3 +56,13 @@ export async function deleteProduct(req: Request, res: Response): Promise<void> 
   }
   res.status(204).send();
 }
+
+export async function uploadProductImageHandler(req: Request, res: Response): Promise<void> {
+  if (!req.file) {
+    res.status(400).json({ error: "Nenhum arquivo enviado." });
+    return;
+  }
+
+  const imageUrl = `${req.protocol}://${req.get("host")}/uploads/products/${req.file.filename}`;
+  res.status(201).json({ imageUrl });
+}

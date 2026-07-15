@@ -3,6 +3,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.routes";
 import productRoutes from "./routes/product.routes";
 import chatRoutes from "./routes/chat.routes";
+import { UPLOADS_ROOT } from "./middleware/upload";
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use(
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
+
+app.use("/uploads", express.static(UPLOADS_ROOT));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
