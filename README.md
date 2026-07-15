@@ -101,6 +101,14 @@ com uma lista fixa de empresas de seed.
 **Sem Docker Compose.** Como o ambiente de desenvolvimento já assume MongoDB local, adicionar
 Docker só aumentaria a fricção do "5 minutos de setup" sem ganho real para este escopo.
 
+**Upload de imagens em disco local, com limpeza automática de órfãos.** O cadastro de produto
+usa upload de arquivo real (não mais URL colada) — `multer` salva em `backend/uploads/products/`
+e o backend serve esses arquivos como estático em `/uploads`. Ao trocar a imagem de um produto ou
+excluí-lo, o arquivo antigo é removido do disco automaticamente — mas só quando a URL antiga
+aponta pra um upload nosso; imagens externas (como as do seed, hospedadas no picsum.photos) nunca
+são tocadas. Assim como o restante do projeto, não há serviço de storage em nuvem — mantém o
+setup em ~5 minutos sem credenciais extras.
+
 **JWT em `localStorage` (não cookie httpOnly).** Simplifica o setup (sem necessidade de
 configurar CORS com credenciais/cookies entre origens diferentes em dev). Para produção real,
 cookies httpOnly + refresh token seriam a escolha mais segura contra XSS — está fora do escopo de
