@@ -1,5 +1,6 @@
 import { FilterQuery } from "mongoose";
 import { Product, IProduct } from "../models/Product";
+import { deleteUploadedImageIfLocal } from "../middleware/upload";
 
 export interface ProductFilters {
   query?: string;
@@ -45,13 +46,28 @@ export async function updateProduct(
   productId: string,
   data: Partial<Pick<IProduct, "name" | "description" | "price" | "category" | "imageUrl">>,
 ): Promise<IProduct | null> {
+  const existing = await Product.findOne({ _id: productId, companyId });
+  if (!existing) return null;
+
   // findOneAndUpdate por _id + companyId: impede editar produto de outra empresa mesmo sabendo o ID.
-  return Product.findOneAndUpdate({ _id: productId, companyId }, data, { new: true, runValidators: true });
+  const updated = await Product.findOneAndUpdate({ _id: productId, companyId }, data, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (updated && data.imageUrl && data.imageUrl !== existing.imageUrl) {
+    await deleteUploadedImageIfLocal(existing.imageUrl);
+  }
+
+  return updated;
 }
 
 export async function deleteProduct(companyId: string, productId: string): Promise<boolean> {
-  const result = await Product.findOneAndDelete({ _id: productId, companyId });
-  return result !== null;
+  const deleted = await Product.findOneAndDelete({ _id: productId, companyId });
+  if (!deleted) return false;
+
+  await deleteUploadedImageIfLocal(deleted.imageUrl);
+  return true;
 }
 
 function escapeRegExp(value: string): string {
