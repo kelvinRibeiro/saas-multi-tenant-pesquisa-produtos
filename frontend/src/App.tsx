@@ -38,7 +38,17 @@ export default function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Toaster position="top-right" toastOptions={{ style: { fontFamily: "IBM Plex Sans, sans-serif" } }} />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              fontFamily: "IBM Plex Sans, sans-serif",
+              background: "var(--color-surface)",
+              color: "var(--color-ink)",
+              border: "1px solid var(--color-line)",
+            },
+          }}
+        />
         <AppRoutes />
       </AuthProvider>
     </ThemeProvider>
