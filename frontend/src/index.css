@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paper: pale sage-tinted neutral (not the cliché warm cream) — echoes the pine accent */
+  --color-paper: #f5f6f1;
+  --color-paper-2: #ececE4;
+  --color-ink: #16211d;
+  --color-ink-soft: #4b564f;
+  --color-ink-faint: #8b9289;
+
+  /* Pine/teal — primary brand color, distinct from generic SaaS indigo/blue */
+  --color-primary: #1f6f5c;
+  --color-primary-dark: #12463a;
+  --color-primary-soft: #dceae5;
+
+  /* Terracotta — sparing accent for the signature price-tag notch + highlights */
+  --color-accent: #e8734a;
+  --color-accent-dark: #c25a35;
+  --color-accent-soft: #fbe4d8;
+
+  --color-danger: #c1443a;
+  --color-danger-soft: #f8dedc;
+
+  --color-line: #dedcd2;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Recorte de "etiqueta de preço" — o elemento assinatura do catálogo.
+     Não define `position` aqui: o componente já aplica a utility `absolute`
+     do Tailwind, e como ambas as classes vivem na mesma @layer, a que
+     definir `position` por último venceria a cascata. */
+  .price-tag {
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+  }
+}
