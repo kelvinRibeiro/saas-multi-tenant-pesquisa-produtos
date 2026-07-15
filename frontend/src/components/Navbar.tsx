@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { Moon, Sun } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import { RoleBadge } from "./RoleBadge";
 
 const tabClass = ({ isActive }: { isActive: boolean }) =>
@@ -8,6 +10,7 @@ const tabClass = ({ isActive }: { isActive: boolean }) =>
 
 export function Navbar() {
   const { session, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   if (!session) return null;
 
   return (
@@ -33,6 +36,13 @@ export function Navbar() {
             <p className="text-xs text-white/60">{session.user.name}</p>
           </div>
           <RoleBadge role={session.user.role} />
+          <button
+            onClick={toggleTheme}
+            aria-label={theme === "light" ? "Ativar tema escuro" : "Ativar tema claro"}
+            className="rounded-md border border-white/20 p-1.5 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
           <button
             onClick={logout}
             className="rounded-md border border-white/20 px-3 py-1.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
