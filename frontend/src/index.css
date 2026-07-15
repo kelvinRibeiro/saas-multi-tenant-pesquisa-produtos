@@ -12,20 +12,49 @@
   --color-primary: #1f6f5c;
   --color-primary-dark: #12463a;
   --color-primary-soft: #dceae5;
+  --color-primary-soft-text: #12463a;
 
   /* Terracotta — sparing accent for the signature price-tag notch + highlights */
   --color-accent: #e8734a;
   --color-accent-dark: #c25a35;
   --color-accent-soft: #fbe4d8;
+  --color-accent-soft-text: #c25a35;
 
   --color-danger: #c1443a;
   --color-danger-soft: #f8dedc;
 
   --color-line: #dedcd2;
+  --color-surface: #ffffff;
 
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "IBM Plex Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: #141d19;
+  --color-paper-2: #1b2620;
+  --color-ink: #edf1ec;
+  --color-ink-soft: #a3ada5;
+  --color-ink-faint: #6d766e;
+
+  --color-primary: #3f9c82;
+  --color-primary-dark: #0d3229;
+  --color-primary-soft: #1c3a32;
+  --color-primary-soft-text: #a7e0cd;
+
+  --color-accent: #ea7a52;
+  --color-accent-dark: #c9683f;
+  --color-accent-soft: #3a231b;
+  --color-accent-soft-text: #f3b596;
+
+  --color-danger: #e0655a;
+  --color-danger-soft: #3a201c;
+
+  --color-line: #2b3934;
+  --color-surface: #1c2723;
 }
 
 @layer base {
