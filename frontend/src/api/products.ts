@@ -19,3 +19,10 @@ export async function updateProduct(id: string, input: ProductInput): Promise<Pr
 export async function deleteProduct(id: string): Promise<void> {
   await apiClient.delete(`/products/${id}`);
 }
+
+export async function uploadProductImage(file: File): Promise<{ imageUrl: string }> {
+  const formData = new FormData();
+  formData.append("image", file);
+  const { data } = await apiClient.post<{ imageUrl: string }>("/products/images", formData);
+  return data;
+}
