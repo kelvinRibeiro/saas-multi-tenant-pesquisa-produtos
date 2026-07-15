@@ -15,7 +15,7 @@ export function ProductCard({
   onDelete: () => void;
 }) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl border border-line bg-white shadow-sm transition-shadow hover:shadow-md">
+    <div className="group flex flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-sm transition-shadow hover:shadow-md">
       <div className="relative aspect-[4/3] overflow-hidden bg-paper-2">
         <img
           src={product.imageUrl}
@@ -33,7 +33,7 @@ export function ProductCard({
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-display font-semibold text-ink">{product.name}</h3>
         </div>
-        <span className="w-fit rounded-full bg-primary-soft px-2 py-0.5 text-xs font-medium text-primary-dark">
+        <span className="w-fit rounded-full bg-primary-soft px-2 py-0.5 text-xs font-medium text-primary-soft-text">
           {product.category}
         </span>
         <p className="line-clamp-2 text-sm text-ink-soft">{product.description}</p>

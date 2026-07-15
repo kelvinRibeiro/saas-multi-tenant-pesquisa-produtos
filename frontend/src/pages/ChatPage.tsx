@@ -79,7 +79,7 @@ export function ChatPage() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Escreva sua pergunta..."
-          className="flex-1 rounded-lg border border-line bg-white px-4 py-2.5 text-ink outline-none focus:border-primary"
+          className="flex-1 rounded-lg border border-line bg-surface px-4 py-2.5 text-ink outline-none focus:border-primary"
         />
         <button
           type="submit"

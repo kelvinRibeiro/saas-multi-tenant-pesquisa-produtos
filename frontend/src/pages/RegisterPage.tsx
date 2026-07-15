@@ -47,7 +47,7 @@ export function RegisterPage() {
           onClick={() => setMode("new-company")}
           className={
             "rounded-md py-1.5 transition-colors " +
-            (mode === "new-company" ? "bg-white text-ink shadow-sm" : "text-ink-soft")
+            (mode === "new-company" ? "bg-surface text-ink shadow-sm" : "text-ink-soft")
           }
         >
           Nova empresa
@@ -57,7 +57,7 @@ export function RegisterPage() {
           onClick={() => setMode("join-company")}
           className={
             "rounded-md py-1.5 transition-colors " +
-            (mode === "join-company" ? "bg-white text-ink shadow-sm" : "text-ink-soft")
+            (mode === "join-company" ? "bg-surface text-ink shadow-sm" : "text-ink-soft")
           }
         >
           Entrar em empresa
@@ -72,7 +72,7 @@ export function RegisterPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Maria Silva"
-            className="rounded-lg border border-line bg-white px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
+            className="rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm font-medium text-ink-soft">
@@ -83,7 +83,7 @@ export function RegisterPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="voce@empresa.com"
-            className="rounded-lg border border-line bg-white px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
+            className="rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm font-medium text-ink-soft">
@@ -95,7 +95,7 @@ export function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="mínimo 6 caracteres"
-            className="rounded-lg border border-line bg-white px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
+            className="rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
           />
         </label>
 
@@ -107,7 +107,7 @@ export function RegisterPage() {
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
               placeholder="Minha Empresa Ltda"
-              className="rounded-lg border border-line bg-white px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
+              className="rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
             />
             <span className="text-xs font-normal text-ink-faint">
               Você será o administrador desta empresa.
@@ -121,7 +121,7 @@ export function RegisterPage() {
               value={companyId}
               onChange={(e) => setCompanyId(e.target.value)}
               placeholder="ID fornecido pelo administrador"
-              className="rounded-lg border border-line bg-white px-3.5 py-2.5 font-mono text-sm text-ink outline-none transition-colors focus:border-primary"
+              className="rounded-lg border border-line bg-surface px-3.5 py-2.5 font-mono text-sm text-ink outline-none transition-colors focus:border-primary"
             />
             <span className="text-xs font-normal text-ink-faint">
               Você entrará como usuário (somente visualização + chat).
