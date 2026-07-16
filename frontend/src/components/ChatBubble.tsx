@@ -16,7 +16,7 @@ export function ChatBubble({ turn }: { turn: ChatTurn }) {
           "max-w-[75%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap " +
           (isUser
             ? "rounded-br-sm bg-primary text-white"
-            : "rounded-bl-sm border border-line bg-white text-ink")
+            : "rounded-bl-sm border border-line bg-surface text-ink")
         }
       >
         {turn.content}

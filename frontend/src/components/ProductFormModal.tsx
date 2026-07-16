@@ -65,9 +65,9 @@ export function ProductFormModal({
   const busy = saving || uploading;
 
   return (
-    <div className="fixed inset-0 z-20 flex items-center justify-center bg-ink/40 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/50 p-4" onClick={onClose}>
       <div
-        className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl"
+        className="w-full max-w-md rounded-xl bg-surface p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
@@ -141,7 +141,7 @@ export function ProductFormModal({
                 type="file"
                 accept={ACCEPTED_TYPES}
                 onChange={handleFileChange}
-                className="flex-1 text-sm text-ink-soft file:mr-3 file:rounded-lg file:border-0 file:bg-primary-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-dark hover:file:bg-primary-soft/80"
+                className="flex-1 text-sm text-ink-soft file:mr-3 file:rounded-lg file:border-0 file:bg-primary-soft file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-soft-text hover:file:bg-primary-soft/80"
               />
             </div>
             <span className="text-xs font-normal text-ink-faint">JPEG, PNG, WEBP ou GIF — até 5MB.</span>

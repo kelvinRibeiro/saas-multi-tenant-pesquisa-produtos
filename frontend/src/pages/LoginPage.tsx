@@ -42,7 +42,7 @@ export function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="voce@empresa.com"
-            className="rounded-lg border border-line bg-white px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
+            className="rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm font-medium text-ink-soft">
@@ -53,7 +53,7 @@ export function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
-            className="rounded-lg border border-line bg-white px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
+            className="rounded-lg border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition-colors focus:border-primary"
           />
         </label>
         <button
