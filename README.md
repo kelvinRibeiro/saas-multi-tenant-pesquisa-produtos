@@ -54,6 +54,24 @@ para todas):
 
 Ou clique em "Criar conta" para registrar uma empresa nova do zero.
 
+### 4. Convidar um usuário padrão para a empresa
+
+O cadastro de uma empresa nova sempre cria o primeiro usuário como `admin`. Para que outra pessoa
+entre na **mesma** empresa como usuário padrão (`user`), ela precisa do `companyId` no momento do
+registro. Para obter e compartilhar esse ID:
+
+1. Faça login como `admin`.
+2. No canto superior direito da Navbar, logo abaixo do nome da empresa, há um botão discreto
+   "ID: xxxxxxxxxx…" com um ícone de cópia.
+3. Clique nele — o `companyId` completo é copiado para a área de transferência (um toast confirma
+   a cópia).
+4. Envie esse ID (por e-mail, chat etc.) para quem vai se cadastrar.
+5. A outra pessoa acessa a tela de registro, escolhe a opção "Entrar em empresa existente" e cola
+   o ID recebido no campo "ID da empresa".
+
+Esse botão só aparece para usuários com `role: "admin"` — usuários padrão não precisam dessa
+informação.
+
 ---
 
 ## Decisões arquiteturais
@@ -94,9 +112,9 @@ do Opus — sem tradeoff perceptível de qualidade nesse caso de uso.
 
 **Registro cria empresa (não escolhe de uma lista).** O primeiro usuário de uma empresa informa o
 nome da empresa e vira `admin` automaticamente; para outra pessoa entrar na mesma empresa, ela
-recebe o `companyId` (mostrado no dashboard/console) e se registra como `user`. Isso modela um
-fluxo real de SaaS B2B (cada empresa é seu próprio tenant, criado sob demanda) em vez de simular
-com uma lista fixa de empresas de seed.
+recebe o `companyId` (o admin copia esse ID pela Navbar — veja "Convidar um usuário padrão para a
+empresa" acima) e se registra como `user`. Isso modela um fluxo real de SaaS B2B (cada empresa é
+seu próprio tenant, criado sob demanda) em vez de simular com uma lista fixa de empresas de seed.
 
 **Sem Docker Compose.** Como o ambiente de desenvolvimento já assume MongoDB local, adicionar
 Docker só aumentaria a fricção do "5 minutos de setup" sem ganho real para este escopo.
