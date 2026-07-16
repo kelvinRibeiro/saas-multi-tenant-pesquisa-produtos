@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { Moon, Sun } from "lucide-react";
+import { Copy, Moon, Sun } from "lucide-react";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import { RoleBadge } from "./RoleBadge";
@@ -12,6 +13,11 @@ export function Navbar() {
   const { session, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   if (!session) return null;
+
+  const copyCompanyId = () => {
+    navigator.clipboard.writeText(session.company.id);
+    toast.success("ID da empresa copiado!");
+  };
 
   return (
     <header className="sticky top-0 z-10 bg-primary-dark shadow-sm">
@@ -34,6 +40,16 @@ export function Navbar() {
           <div className="hidden text-right sm:block">
             <p className="text-sm font-medium text-white">{session.company.name}</p>
             <p className="text-xs text-white/60">{session.user.name}</p>
+            {session.user.role === "admin" && (
+              <button
+                onClick={copyCompanyId}
+                title="Copiar ID da empresa para compartilhar com novos usuários"
+                className="mt-0.5 inline-flex items-center gap-1 text-xs text-white/50 transition-colors hover:text-white/80"
+              >
+                <Copy size={11} />
+                ID: {session.company.id.slice(0, 10)}…
+              </button>
+            )}
           </div>
           <RoleBadge role={session.user.role} />
           <button
